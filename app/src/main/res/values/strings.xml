@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aberoy</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+</resources>
