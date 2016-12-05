@@ -1,5 +1,7 @@
 package com.androidapp.demafayz.aberoy.network.data;
 
+import com.androidapp.demafayz.aberoy.network.RequestUtils;
+
 /**
  * Created by DemaFayz on 27.11.2016.
  */
@@ -24,4 +26,6 @@ public class RequestResult {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
 }

@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,6 +56,40 @@ public class RequestUtils {
             sb.append(line);
         }
         return sb.toString();
+    }
+
+    public static RequestResult uploadJson(String requestUrl, RequestMethods requestMethod, String json) {
+        RequestResult requestResult = null;
+        try {
+            URL url = new URL(requestUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            if (requestMethod == RequestMethods.POST) {
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+                conn.setRequestMethod("POST");
+            }
+            conn.setRequestProperty("Content-Type", "application/json");
+            OutputStreamWriter os = new OutputStreamWriter(conn.getOutputStream());
+            os.write(json);
+            os.close();
+
+            requestResult = new RequestResult();
+            int requestCode = conn.getResponseCode();
+            requestResult.setCode(requestCode);
+            if (requestCode == HttpURLConnection.HTTP_OK) {
+                String result = readStream(conn.getInputStream());
+                requestResult.setMessage(result);
+            } else {
+                String result = readStream(conn.getErrorStream());
+                requestResult.setMessage(result);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            return requestResult;
+        }
     }
 
     public enum RequestMethods {

@@ -16,6 +16,8 @@ public class Lecturer {
 
     private String patronymic;
 
+    private String description;
+
     private Date dateOfBirth;
 
     private String sex;
@@ -52,6 +54,14 @@ public class Lecturer {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setLastName(String lastName) {
