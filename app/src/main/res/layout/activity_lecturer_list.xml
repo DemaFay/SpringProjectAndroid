@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvLecturers"
@@ -10,11 +11,13 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/btnAddLecturer"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddLecturer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"/>
-</RelativeLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_add"
+        app:layout_anchor="@id/rvLecturers"
+        app:layout_anchorGravity="bottom|right|end"/>
+</android.support.design.widget.CoordinatorLayout>

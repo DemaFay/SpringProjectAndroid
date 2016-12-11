@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/miRemove"
+        android:title="@string/remove"
+        android:icon="@drawable/ic_delete"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/miEdit"
+        android:title="Редактировать"
+        android:icon="@drawable/ic_mode_edit"
+        app:showAsAction="always"
+        android:orderInCategory="99"/>
+
+</menu>

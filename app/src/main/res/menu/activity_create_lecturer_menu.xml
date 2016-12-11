@@ -4,7 +4,7 @@
 
     <item android:title="Item"
         android:checkable="false"
-        android:showAsAction="always"
+        app:showAsAction="always"
         android:id="@+id/miAccept"
         android:icon="@drawable/ic_done" />
 </menu>

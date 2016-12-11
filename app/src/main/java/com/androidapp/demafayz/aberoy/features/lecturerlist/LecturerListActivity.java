@@ -2,6 +2,7 @@ package com.androidapp.demafayz.aberoy.features.lecturerlist;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,8 +48,8 @@ public class LecturerListActivity extends BaseActivity implements OnRecyclerClic
 
     class ViewHolder {
 
-        @BindView(R.id.btnAddLecturer)
-        public Button btnAddLecturer;
+        @BindView(R.id.fabAddLecturer)
+        public FloatingActionButton fabAddLecturer;
 
         @BindView(R.id.rvLecturers)
         public RecyclerView rvLecturers;
@@ -64,6 +65,12 @@ public class LecturerListActivity extends BaseActivity implements OnRecyclerClic
         populateViewHolder();
         loadLecturers();
         //testAdapter();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadLecturers();
     }
 
     private void testAdapter() {
@@ -138,15 +145,32 @@ public class LecturerListActivity extends BaseActivity implements OnRecyclerClic
 
         View layout = inflater.inflate(R.layout.activity_lecturer_list, null, true);
         vh = new ViewHolder(layout);
+        vh.rvLecturers.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && vh.fabAddLecturer.isShown()) {
+                    vh.fabAddLecturer.hide();
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    vh.fabAddLecturer.show();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+
         setContentView(layout);
-        vh.btnAddLecturer.setOnClickListener(this);
+        vh.fabAddLecturer.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.btnAddLecturer:
+            case R.id.fabAddLecturer:
                 showCreateLecturer();
                 break;
         }

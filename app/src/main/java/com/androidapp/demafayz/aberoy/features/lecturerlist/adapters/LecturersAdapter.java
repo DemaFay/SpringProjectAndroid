@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.androidapp.demafayz.aberoy.R;
 import com.androidapp.demafayz.aberoy.interfaces.OnRecyclerClickListener;
-import com.androidapp.demafayz.aberoy.network.entitys.Lecture;
 import com.androidapp.demafayz.aberoy.network.entitys.Lecturer;
 import com.androidapp.demafayz.aberoy.utils.StringUtils;
 
@@ -38,8 +37,8 @@ public class LecturersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         @BindView(R.id.tvSurname)
         public TextView tvSurname;
 
-        @BindView(R.id.tvLectures)
-        public TextView tvLectures;
+        @BindView(R.id.tvDesc)
+        public TextView tvDesc;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -74,15 +73,11 @@ public class LecturersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ViewHolder vh = (ViewHolder) holder;
         String name = mLecturers.get(position).getFirstName();
         String lastName = mLecturers.get(position).getLastName();
-        List<String> lectureStringList = new ArrayList<>();
-        for (Lecture lecture : mLecturers.get(position).getLectures()) {
-            lectureStringList.add(lecture.getTitle());
-        }
-        String lectures = StringUtils.stringTransfer(lectureStringList);
+        String desc = mLecturers.get(position).getDescription();
 
         vh.tvName.setText(name);
         vh.tvSurname.setText(lastName);
-        vh.tvLectures.setText(lectures);
+        vh.tvDesc.setText(desc);
     }
 
     @Override

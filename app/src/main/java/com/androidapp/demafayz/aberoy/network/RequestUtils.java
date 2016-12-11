@@ -29,6 +29,9 @@ public class RequestUtils {
                 conn.setDoInput(true);
                 conn.setDoOutput(false);
                 conn.setRequestMethod("GET");
+            } else if (requestMethod == RequestMethods.DELETE) {
+                conn.setRequestMethod("DELETE");
+                conn.setDoOutput(false);
             }
             requestResult = new RequestResult();
             int requestCode = conn.getResponseCode();
@@ -93,6 +96,6 @@ public class RequestUtils {
     }
 
     public enum RequestMethods {
-        GET, POST, PUT
+        GET, POST, PUT, DELETE
     }
 }

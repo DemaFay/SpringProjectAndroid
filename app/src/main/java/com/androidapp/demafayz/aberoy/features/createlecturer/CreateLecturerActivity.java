@@ -195,8 +195,6 @@ public class CreateLecturerActivity extends BaseActivity implements View.OnClick
         String description = mVh.etDescription.getText().toString();
         lecturer.setFirstName(name);
         lecturer.setLastName(surname);
-        lecturer.setSex(sex);
-        lecturer.setDateOfBirth(mBirthDate);
         lecturer.setDescription(description);
         return lecturer;
     }

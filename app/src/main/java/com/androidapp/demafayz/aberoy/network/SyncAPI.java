@@ -17,18 +17,17 @@ import java.net.URL;
 public class SyncAPI {
 
     private static final String HOST = "http://10.0.3.2:8080";
-    private static final String GET_ALL_LECTURERS = HOST + "/lecturers";
-    private static final String CREATE_NEW_LECTURER = HOST + "/createlecturer";
+    private static final String LECTURERS_URL = HOST + "/lecturers";
 
 
     public static RequestResult getAllLecturers() {
-        RequestResult result = RequestUtils.baseRequest(GET_ALL_LECTURERS, RequestUtils.RequestMethods.GET, null);
+        RequestResult result = RequestUtils.baseRequest(LECTURERS_URL, RequestUtils.RequestMethods.GET, null);
         return result;
     }
 
-    public static RequestResult getLecturer(long mItemId) {
-        Uri uri = Uri.parse(GET_ALL_LECTURERS);
-        uri = uri.buildUpon().appendPath(String.valueOf(mItemId)).build();
+    public static RequestResult getLecturer(long lecturerID) {
+        Uri uri = Uri.parse(LECTURERS_URL);
+        uri = uri.buildUpon().appendPath(String.valueOf(lecturerID)).build();
         String newUrl = uri.toString();
         RequestResult result = RequestUtils.baseRequest(newUrl, RequestUtils.RequestMethods.GET, null);
         return result;
@@ -37,7 +36,15 @@ public class SyncAPI {
     public static RequestResult createNewLecturer(Lecturer lecturer) {
         Gson gson = new GsonBuilder().setDateFormat("dd-MM-yyyy HH:mm:ss").create();
         String json = gson.toJson(lecturer);
-        RequestResult result = RequestUtils.uploadJson(CREATE_NEW_LECTURER, RequestUtils.RequestMethods.POST, json);
+        RequestResult result = RequestUtils.uploadJson(LECTURERS_URL, RequestUtils.RequestMethods.POST, json);
+        return result;
+    }
+
+    public static RequestResult removeLecturer(long lecturerID) {
+        Uri uri = Uri.parse(LECTURERS_URL);
+        uri = uri.buildUpon().appendPath(String.valueOf(lecturerID)).build();
+        String newUrl = uri.toString();
+        RequestResult result = RequestUtils.baseRequest(newUrl, RequestUtils.RequestMethods.DELETE, null);
         return result;
     }
 }
