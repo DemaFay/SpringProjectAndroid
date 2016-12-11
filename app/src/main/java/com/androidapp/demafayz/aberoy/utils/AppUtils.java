@@ -7,7 +7,7 @@ import android.util.Log;
  */
 
 public class AppUtils {
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static void dLog(Class classObj, String text) {
         if (DEBUG) {

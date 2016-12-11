@@ -56,9 +56,6 @@ public class LecturerItemActivity extends BaseActivity {
         @BindView(R.id.tvDescription)
         TextView tvDescription;
 
-        @BindView(R.id.tvDate)
-        TextView tvDate;
-
         public ViewHolder(View layout) {
             ButterKnife.bind(this, layout);
         }
@@ -116,7 +113,6 @@ public class LecturerItemActivity extends BaseActivity {
         mVh.tvName.setText(name);
         mVh.tvSurname.setText(surname);
         mVh.tvDescription.setText(description);
-        mVh.tvDate.setText("");
     }
 
     private Observable<RequestResult> populateLecturerObservable() {
