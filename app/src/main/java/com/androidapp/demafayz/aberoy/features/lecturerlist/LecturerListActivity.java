@@ -145,22 +145,6 @@ public class LecturerListActivity extends BaseActivity implements OnRecyclerClic
 
         View layout = inflater.inflate(R.layout.activity_lecturer_list, null, true);
         vh = new ViewHolder(layout);
-        vh.rvLecturers.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0 || dy < 0 && vh.fabAddLecturer.isShown()) {
-                    vh.fabAddLecturer.hide();
-                }
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    vh.fabAddLecturer.show();
-                }
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
 
         setContentView(layout);
         vh.fabAddLecturer.setOnClickListener(this);

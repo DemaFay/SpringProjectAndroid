@@ -18,18 +18,18 @@
             </intent-filter>-->
         </activity>
 
-        <activity android:name=".features.lecturerlist.LecturerListActivity">
+        <activity android:label="@string/lecturers_list" android:name=".features.lecturerlist.LecturerListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.lectureritem.LecturerItemActivity"/>
+        <activity android:label="@string/lecturer" android:name=".features.lectureritem.LecturerItemActivity"/>
 
-        <activity android:name=".features.createlecturer.CreateLecturerActivity"/>
+        <activity android:label="@string/create_lecturer" android:name=".features.createlecturer.CreateLecturerActivity"/>
 
-        <activity android:name=".features.editlecturer.EditLecturerActivity"/>
+        <activity android:label="@string/edit_lecturer" android:name=".features.editlecturer.EditLecturerActivity"/>
 
         <activity android:name=".test.TestActivity">
             <!--<intent-filter>

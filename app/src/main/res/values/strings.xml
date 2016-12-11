@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Aberoy</string>
+
+    <string name="lecturers_list">Список лекторов</string>
+    <string name="create_lecturer">Создание лектора</string>
+    <string name="edit_lecturer">Редактирование лектора</string>
+    <string name="lecturer">Лектор</string>
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
     <string name="remove">Удалить</string>
